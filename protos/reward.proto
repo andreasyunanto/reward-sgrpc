@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package reward;
+
+option go_package = "./pb";
+
+message Reward {
+  string rewardId = 1;
+  string userId = 2;
+  int64 totalPoint = 3;
+}
+
+message GetRewardUserRequest { string userId = 1; }
+
+message GetRewardResponse {
+    bool status = 1;
+    Reward data = 2;
+    string message = 3;
+}
+
+service RewardService {
+    rpc GetRewardUser(GetRewardUserRequest) returns (GetRewardResponse) {}
+}
